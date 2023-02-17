@@ -22,8 +22,8 @@ public class Address {
             this.apartmentNumber = addressArray[2].replace(",", "");
         }
 
-        this.streetName = addressArray[1].replace(",", "");
         this.streetNumber = addressArray[0].replace(",", "");
+        this.streetName = addressArray[1].replace(",", "");
         this.city = addressArray[2+aptIndent].replace(",", "");
         this.state = addressArray[3+aptIndent].replace(",", "");
         this.zipcode = addressArray[4+aptIndent].replace(",", "");
