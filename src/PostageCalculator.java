@@ -1,8 +1,16 @@
 public class PostageCalculator extends Package {
 
     public static double calculatePostage(Package p) {
-        return 3.75 + costIfExceedingSize(p.length(), p.width(), p.height())
-                + costBasedOnWeight(p.weight()) + costBasedOnZipcode(p.origin().zipcode(), p.destination().zipcode());
+        return calculatePostage(p.origin(), p.destination(), p.weight(), p.length(), p.width(), p.height());
+    }
+
+    public static double calculatePostage(Address a1, Address a2, double weight, double length, double width, double height) {
+        return calculatePostage(a1.zipcode(), a2.zipcode(), weight, length, width, height);
+    }
+
+    public static double calculatePostage(String z1, String z2, double weight, double length, double width, double height) {
+        return 3.75 + costIfExceedingSize(length, width, height)
+                + costBasedOnWeight(weight) + costBasedOnZipcode(z1, z2);
     }
 
     private static double costBasedOnWeight(double weight) {
